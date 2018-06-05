@@ -22,7 +22,7 @@
     "eject": "react-scripts eject",
     "webpack-server": "webpack-dev-server --mode development --open",
     "webpack-dev": "webpack --mode development",
-    "webpack-build": "webpack --mode production"
+    "webpack-build": "webpack -p --env production"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -32,6 +32,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.8.3",
