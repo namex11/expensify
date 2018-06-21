@@ -16,14 +16,15 @@
     "uuid": "^3.2.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "jest-test": "jest --config=jest.config.json",
     "eject": "react-scripts eject",
     "webpack-server": "webpack-dev-server --mode development --open",
     "webpack-dev": "webpack --mode development",
-    "webpack-build": "webpack -p --env production"
+    "webpack-build": "webpack -p --env production",
+    "heroku-postbuild": "npm run webpack-build"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
