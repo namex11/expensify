@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { ExpenseListFilters } from '../../components/ExpenseListFilters';
 import { filters, altFilters } from '../fixtures/filters';
-import moment from '../__mocks__/moment';
+import moment from 'moment';
 
 let setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate, wrapper;
 
@@ -64,10 +64,16 @@ test("should sort by amount", ()=>{
 
 test("should handle date changes", ()=>{
     const dates = {
-        startDate: moment(),
-        endDate: moment(2)
+        startDate: moment(0).add(4, 'days'),
+        endDate: moment(0).add(8, 'days')
     };
     wrapper.find('DateRangePicker').prop('onDatesChange')({...dates});
     expect(setStartDate).toHaveBeenLastCalledWith(dates.startDate);
     expect(setEndDate).toHaveBeenLastCalledWith(dates.endDate);
+});
+
+test("should handle date focus changes", ()=>{
+    const calendarFocused = 'endDate';
+    wrapper.find('DateRangePicker').prop('onFocusChange')(calendarFocused);
+    expect(wrapper.state('calendarFocused')).toBe(calendarFocused);
 });
