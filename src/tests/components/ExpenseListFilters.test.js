@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { ExpenseListFilters } from '../../components/ExpenseListFilters';
 import { filters, altFilters } from '../fixtures/filters';
-import { wrap } from 'module';
+import moment from '../__mocks__/moment';
 
 let setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate, wrapper;
 
@@ -44,12 +44,30 @@ test("should handle text change", ()=>{
 });
 
 test("should sort by date", ()=>{
+    const value = 'date';
     wrapper.setProps({
         filters: altFilters
-    })
-    const sort = 'date';
-    wrapper.find('select').simulate('change', {
-        target: {sort}
     });
-    expect(sortByDate).toHaveBeenCalledTimes(1);
+    wrapper.find('select').simulate('change', {
+        target: {value}
+    });
+    expect(sortByDate).toHaveBeenCalled();
+});
+
+test("should sort by amount", ()=>{
+    const value = 'amount';
+    wrapper.find('select').simulate('change', {
+        target: {value}
+    });
+    expect(sortByAmount).toHaveBeenCalled();
+});
+
+test("should handle date changes", ()=>{
+    const dates = {
+        startDate: moment(),
+        endDate: moment(2)
+    };
+    wrapper.find('DateRangePicker').prop('onDatesChange')({...dates});
+    expect(setStartDate).toHaveBeenLastCalledWith(dates.startDate);
+    expect(setEndDate).toHaveBeenLastCalledWith(dates.endDate);
 });
