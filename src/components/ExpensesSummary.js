@@ -5,18 +5,17 @@ import '../locales/lt';
 import selectExpenses from '../selectors/expenses';
 import selectExpensesTotal from '../selectors/expenses-total';
 
-const ExpensesSummary = (props) => (
-    <div>
-        {props.expensesCount <= 1 ? 
-            <p>{`Viewing ${props.expensesCount} expense totaling ${props.expensesTotal}`}</p> 
-            : 
-            <p>{`Viewing ${props.expensesCount} expenses totaling ${props.expensesTotal}`}</p>
-        }
-    </div>
-)
+const ExpensesSummary = (props) => {
+    const expenseWord = props.expensesCount <= 1 ? 'expense' : 'expenses'
+    return (
+        <div>
+            <p>{`Viewing ${props.expensesCount} ${expenseWord} totaling ${props.expensesTotal}`}</p>
+        </div>
+    )
+}
 
 
-const mapStateToProps = ((state) =>{
+const mapStateToProps = ((state) => {
     return {
         expensesCount: selectExpenses(state.expenses, state.filters).length,
         expensesTotal: numeral(selectExpensesTotal(selectExpenses(state.expenses, state.filters)) / 100).format('0,0[.]00 $')
