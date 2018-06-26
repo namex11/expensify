@@ -6,7 +6,7 @@ const config = {
     databaseURL: "https://expensify-65af3.firebaseio.com",
     projectId: "expensify-65af3",
     storageBucket: "expensify-65af3.appspot.com",
-    messagingSenderId: "452403118169"
+    messagingSenderId: ""
 };
 firebase.initializeApp(config);
 
