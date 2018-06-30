@@ -7,11 +7,13 @@ const config = {
     projectId: "expensify-65af3",
     storageBucket: "expensify-65af3.appspot.com",
     messagingSenderId: ""
-  };
+};
 
 firebase.initializeApp(config);
 
 const database = firebase.database();
+
+export { firebase, database as default };
 
 // database.ref('expenses').on('value', (dataSnapshot)=>{
 //     const expenses = [];
@@ -24,10 +26,9 @@ const database = firebase.database();
 //     console.log(expenses);
 // });
 
-database.ref('expenses').on('child_changed', (dataSnapshot)=>{
-    console.log(dataSnapshot.key, dataSnapshot.val())
-})
-
+// database.ref('expenses').on('child_changed', (dataSnapshot) => {
+//     console.log(dataSnapshot.key, dataSnapshot.val())
+// })
 
 
 // database.ref('expenses').once('value').then((dataSnapshot)=>{
