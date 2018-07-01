@@ -36,13 +36,15 @@
   },
   "scripts": {
     "start": "node server/server.js",
-    "jest-test": "jest --config=jest.config.json",
+    "test": "cross-env NODE_ENV=test jest --config=jest.config.json",
     "webpack-server": "webpack-dev-server --mode development --open",
     "webpack-dev": "webpack --mode development",
     "webpack-build": "webpack -p --env production",
     "heroku-postbuild": "npm run webpack-build"
   },
   "devDependencies": {
+    "cross-env": "^5.2.0",
+    "dotenv": "^6.0.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.4",
