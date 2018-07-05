@@ -33,6 +33,7 @@ export class ExpenseListFilters extends React.Component {
             type="text"
             value={this.props.filters.text}
             onChange={this.onTextChange}
+            placeholder={'Filter by description'}
           />
           <select
             value={this.props.filters.sortBy}
